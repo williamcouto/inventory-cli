@@ -7,3 +7,10 @@ interface Produto {
     category: string;
 }
 
+// Criando Enum de Categorias
+enum Categorias {
+    Salgados = "Salgados",
+    Doces = "Doces",
+    Bebidas = "Bebidas",
+    Outros = "Outros"
+}
