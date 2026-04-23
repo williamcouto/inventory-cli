@@ -3,7 +3,7 @@ import dbInventory from "./connection";
 export async function createDBTable(){
     const query = `
         CREATE TABLE IF NOT EXISTS Product(
-            id PRIMARY KEY INTEGER,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             quantity INTEGER NOT NULL, 
             price REAL NOT NULL,
@@ -12,8 +12,8 @@ export async function createDBTable(){
     `
 
     try{
-        dbInventory.run(query)
-        console.log("Tabela Criada!")
+       await dbInventory.run(query)
+        console.log("A Tabela foi criada!")
     }
     catch (err) {
         console.log(`Erro ao criar tabela`)
