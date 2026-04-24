@@ -1,5 +1,4 @@
-import dbInventory from "./connection";
-
+import dbInventory from "./connection.js";
 export async function createDBTable(){
     const query = `
         CREATE TABLE IF NOT EXISTS Product(
@@ -8,11 +7,10 @@ export async function createDBTable(){
             quantity INTEGER NOT NULL, 
             price REAL NOT NULL,
             category TEXT
-        );
-    `
+        );`
 
     try{
-       await dbInventory.run(query)
+        dbInventory.run(query)
         console.log("A Tabela foi criada!")
     }
     catch (err) {
