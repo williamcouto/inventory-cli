@@ -11,10 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "sqlite3": "^6.0.1",
+    "better-sqlite3": "^12.9.0",
     "typescript": "^6.0.2"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.5.0",
     "ts-node": "^10.9.2"
   }
