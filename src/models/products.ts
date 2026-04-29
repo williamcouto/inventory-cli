@@ -1,14 +1,14 @@
 // Criando interfaces
-interface Produto {
+export interface Produto {
     id?: number;
     name: string;
     quantity: number;
     price: number;
-    category: string;
+    category: Categorias;  // Aceita os valores pré-definidos
 }
 
 // Criando Enum de Categorias
-enum Categorias {
+export enum Categorias {
     Salgados = "Salgados",
     Doces = "Doces",
     Bebidas = "Bebidas",
