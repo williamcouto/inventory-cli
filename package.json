@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "better-sqlite3": "^12.9.0",
+    "inquirer": "^13.4.2",
     "typescript": "^6.0.2"
   },
   "devDependencies": {
