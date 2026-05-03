@@ -1,5 +1,7 @@
 // Testando
-const app: string = "Inventory"
-const version: number = 1.0
+import {showMenu} from './cli/menu.js'
 
-console.log(`Testando a aplicação ${app} ${version}`)
+async function startSystem(){
+    await showMenu()
+}
+startSystem()
