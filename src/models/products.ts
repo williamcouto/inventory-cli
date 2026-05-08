@@ -12,5 +12,6 @@ export enum Categorias {
     Salgados = "Salgados",
     Doces = "Doces",
     Bebidas = "Bebidas",
+    Eletronicos = "Eletronicos",
     Outros = "Outros"
 }
