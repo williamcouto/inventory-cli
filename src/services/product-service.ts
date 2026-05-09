@@ -22,7 +22,7 @@ export class ProductService{
         this.repo.saveProduct(product)
     }
 
-    listProducts(){
-        this.repo.listAllProducts()
+    listAllProducts(){
+        return this.repo.listAllProducts()
     }
 }

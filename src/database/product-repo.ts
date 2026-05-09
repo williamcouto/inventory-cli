@@ -16,9 +16,8 @@ export class ProductRepo{
     }
 
     listAllProducts(){
-        const queryState = dbInventory.prepare(`
-            SELECT * FROM products`)
-        const products = queryState.all() as Produto[]
-        return products
+        const queryState = dbInventory.prepare(`SELECT * FROM products`)
+        const product = queryState.all() as Produto[]
+        return product
     }
 }

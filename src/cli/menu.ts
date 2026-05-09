@@ -63,7 +63,12 @@ export async function showMenu(): Promise<void>{
                 } catch (error) {
                     console.log('Ocorreu um erro ao cadastrar o produto:', error)
                 }
-                break;    
+                break;
+            
+            case "Listar produtos":
+                const products = service.listAllProducts()
+                console.table(products)
+                break;
         }
     }
 }

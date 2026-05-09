@@ -7,7 +7,7 @@ export function createDBTable(): void{
             name TEXT NOT NULL,
             quantity INTEGER NOT NULL, 
             price REAL NOT NULL,
-            category TEXT DEFAULT
+            category TEXT DEFAULT 'Outros'
         );`
 
         try{
