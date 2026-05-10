@@ -16,7 +16,7 @@ export async function showMenu(): Promise<void>{
                 choices: [
                     'Cadastrar Produto',
                     'Listar produtos',
-                    'Deletar produtos',
+                    'Deletar produto',
                     new inquirer.Separator(),
                     'Sair'
                 ],
@@ -25,6 +25,7 @@ export async function showMenu(): Promise<void>{
         ])
 
         switch(menu){
+            // Adicionar um produto na tabela 
             case "Cadastrar Produto":
                  const {name, quantity, price, category} = await inquirer.prompt([
                         {
@@ -65,6 +66,7 @@ export async function showMenu(): Promise<void>{
                 }
                 break
             
+            // Listar os produtos presentes na tabela
             case "Listar produtos":
                 const products = service.listAllProducts()
                 console.table(products)
@@ -73,6 +75,25 @@ export async function showMenu(): Promise<void>{
             case "Sair":
                 console.log('Saindo...')
                 optionState = false
+                break
+            
+            // Deletar um produto da tabela
+            case "Deletar produto":
+                const { id } = await inquirer.prompt([
+                    {
+                        type: "number",
+                        name: "id",
+                        message: "Insira o ID do produto:",
+                    }
+                ])
+
+                try{
+                    service.deleteProducts(id)
+                }
+                catch(error){
+                    console.log(error)
+                }
+                break
         }
     }
 }
