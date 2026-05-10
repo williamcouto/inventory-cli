@@ -20,4 +20,9 @@ export class ProductRepo{
         const product = queryState.all() as Produto[]
         return product
     }
+
+    deleteProducts(id: number){
+        const queryStateDel = dbInventory.prepare(`DELETE FROM products WHERE id = ?`).run(id)
+        return queryStateDel
+    }
 }
