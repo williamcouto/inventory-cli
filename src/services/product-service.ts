@@ -9,6 +9,9 @@ export class ProductService{
         if(!product.name.trim()){
             throw new Error("O nome do produto é obrigatório")
         }
+        if(product.quantity == null){
+            throw new Error("A quantidade é obrigatória")
+        }
         if(product.quantity < 0){
             throw new Error("Quantidade não pode ser negativa")
         }
@@ -25,4 +28,13 @@ export class ProductService{
     listAllProducts(){
         return this.repo.listAllProducts()
     }
+
+    deleteProducts(id: number): void{
+        if(id == null){
+        throw new Error("O ID do produto é obrigatório para a exclusão!")
+        }
+        this.repo.deleteProducts(id)
+        console.log(`O produto com ID ${id} foi deletado!`)
+    }
+    
 }
