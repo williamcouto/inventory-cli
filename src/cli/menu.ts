@@ -20,7 +20,6 @@ export async function showMenu(): Promise<void>{
                     new inquirer.Separator(),
                     'Sair'
                 ],
-                
             }
         ])
 
