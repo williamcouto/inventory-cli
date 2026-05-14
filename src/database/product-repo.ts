@@ -25,4 +25,11 @@ export class ProductRepo{
         const queryStateDel = dbInventory.prepare(`DELETE FROM products WHERE id = ?`).run(id)
         return queryStateDel
     }
+
+    filterLowProducts(): Produto[]{
+        const filteredProduct = dbInventory.prepare(`
+            SELECT name, quantity FROM products WHERE quantity < 6`)
+        const products = filteredProduct.all() as Produto[]
+        return products
+    }
 }
