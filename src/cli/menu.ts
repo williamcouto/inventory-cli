@@ -16,6 +16,7 @@ export async function showMenu(): Promise<void>{
                 choices: [
                     'Cadastrar Produto',
                     'Listar produtos',
+                    'Alerta de Quantidade',
                     'Deletar produto',
                     new inquirer.Separator(),
                     'Sair'
@@ -92,6 +93,12 @@ export async function showMenu(): Promise<void>{
                 catch(error){
                     console.log(error)
                 }
+                break
+            
+            // Filtrar produtos 
+            case "Alerta de Quantidade":
+                const listProducts = service.filterLowProducts()
+                console.table(listProducts)
                 break
         }
     }

@@ -36,5 +36,9 @@ export class ProductService{
         this.repo.deleteProducts(id)
         console.log(`O produto com ID ${id} foi deletado!`)
     }
+
+    filterLowProducts(){
+        return this.repo.filterLowProducts()
+    }
     
 }
