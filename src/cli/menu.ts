@@ -8,6 +8,9 @@ const service = new ProductService()
 const logger = {
     success(textUser: string){
         console.log(picocolors.bgGreen(textUser))    
+    },
+    alert(textUser: string){
+        console.log(picocolors.bgRed(textUser))
     }
 }
 
@@ -67,7 +70,7 @@ export async function showMenu(): Promise<void>{
                     service.addProduct({name, quantity, price, category})
                     logger.success('Produto cadastrado com sucesso!')
                 } catch (error) {
-                    console.log(`Ocorreu um erro ao cadastrar o produto: ${error}`)
+                    logger.alert(`Ocorreu um erro ao cadastrar o produto - ${error}`)
                 }
                 break
             
