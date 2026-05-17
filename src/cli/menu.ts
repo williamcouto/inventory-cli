@@ -5,7 +5,7 @@ import { Categorias } from "../models/products.js";
 import picocolors from "picocolors";
 
 const service = new ProductService()
-const logger = {
+export const logger = {
     success(textUser: string){
         console.log(picocolors.bgGreen(textUser))    
     },
