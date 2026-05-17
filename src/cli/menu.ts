@@ -2,8 +2,14 @@
 import inquirer from "inquirer";
 import { ProductService } from "../services/product-service.js";
 import { Categorias } from "../models/products.js";
+import picocolors from "picocolors";
 
 const service = new ProductService()
+const logger = {
+    success(textUser: string){
+        console.log(picocolors.bgGreen(textUser))    
+    }
+}
 
 export async function showMenu(): Promise<void>{
     let optionState = true
@@ -59,10 +65,9 @@ export async function showMenu(): Promise<void>{
 
                 try {
                     service.addProduct({name, quantity, price, category})
-                    console.log('Produto cadastrado com sucesso!')
-                    
+                    logger.success('Produto cadastrado com sucesso!')
                 } catch (error) {
-                    console.log('Ocorreu um erro ao cadastrar o produto:', error)
+                    console.log(`Ocorreu um erro ao cadastrar o produto: ${error}`)
                 }
                 break
             
