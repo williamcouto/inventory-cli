@@ -1,5 +1,7 @@
 import { ProductRepo } from "../database/product-repo.js";
 import { Produto } from "../models/products.js";
+import picocolors from "picocolors";
+import { logger } from "../cli/menu.js";
 
 // Validações e Regras de negócio
 export class ProductService{
@@ -7,20 +9,24 @@ export class ProductService{
     
     addProduct(product: Produto): void{
         if(!product.name.trim()){
-            throw new Error("O nome do produto é obrigatório")
+            logger.alert("O nome do produto é obrigatório")
+            throw new Error()
         }
         if(product.quantity == null){
-            throw new Error("A quantidade é obrigatória")
+            logger.alert("A quantidade é obrigatória")
+            throw new Error()
         }
         if(product.quantity < 0){
-            throw new Error("Quantidade não pode ser negativa")
+            logger.alert("A quantidade não pode ser negativa")
+            throw new Error()
         }
-
         if(product.price == undefined){
-            throw new Error("O preço do produto é obrigatório")
+            logger.alert("O preço do produto é obrigatório")
+            throw new Error()
         }
         if(product.price < 0){
-            throw new Error("O valor não pode ser negativo")
+            logger.alert("O valor do produto não deve ser negativo")
+            throw new Error()
         }
         this.repo.saveProduct(product)
     }
@@ -31,10 +37,11 @@ export class ProductService{
 
     deleteProducts(id: number): void{
         if(id == null){
-        throw new Error("O ID do produto é obrigatório para a exclusão!")
+            logger.alert("O ID é obrigatório para a exclusão!")
+            throw new Error() 
         }
         this.repo.deleteProducts(id)
-        console.log(`O produto com ID ${id} foi deletado!`)
+        logger.success(`O produto com ID ${id} foi deletado!`)
     }
 
     filterLowProducts(){
