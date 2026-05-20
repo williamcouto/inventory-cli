@@ -8,14 +8,26 @@ Ferramenta de gerenciamento de inventário via linha de comando, desenvolvida co
 ![inquirer](https://img.shields.io/badge/inquirer-CB3837?style=flat&logo=npm&logoColor=black)
 ![picocolors](https://img.shields.io/badge/picocolors-CB3837?style=flat&logo=npm&logoColor=black)
 
-# Funcionalidade
+## Funcionalidade
 - Cadastrar produtos com nome, preço, quantidade e categoria.
 - Listar todos os produtos em uma tabela formatada e personalizada.
 - Deletar itens através do ID.
 - Persistência de dados com banco de dados SQLite.
 
-# Instalação
-Para utilizar a ferramenta, siga o passos
+## Instalação
+Para utilizar a ferramenta, verifique os pré-requisitos
+```markdown
+## Pré-requisitos
+- Node.js >= 18
+- npm >= 9
+```
+
+### Como usar?
+Após executar o comando `npm run dev`, um menu interativo será exibido com as opções:
+- Cadastrar produtos: permite inserir novos produtos
+- Listar produtos: exibe a tabela com todos os itens cadastrados.
+- Deletar produtos: remove o item específico com ID
+- Sair: encerra a ferramenta
 
 1. Clone o repositório local.
 ```bash
@@ -25,11 +37,14 @@ git clone https://github.com/williamcouto/inventory-cli.git
 ```bash
 npm install
 ```
-3. Execute a ferramenta no modo desenvolvimento.
+3. Execute a ferramenta no modo desenvolvimento ou compile para produção.
 ```bash
+### Modo desenvolvimento
 npm run dev
+### Modo 
+npm run build && npm start
 ```
-# Arquitetura do projeto 
+## Arquitetura do projeto 
 O projeto foi desenvolvido em uma arquitetura em camadas, visando uma organização de maneira modular e escalável.
 
 - CLI [`menu.ts`]: responsavel por coletar input do usuario  via biblioteca Inquirer.
