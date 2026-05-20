@@ -10,12 +10,12 @@ Ferramenta de gerenciamento de inventário via linha de comando, desenvolvida co
 
 # Funcionalidade
 - Cadastrar produtos com nome, preço, quantidade e categoria.
-- Listar todos os produtos em uma tabeta formatada e personalizada.
+- Listar todos os produtos em uma tabela formatada e personalizada.
 - Deletar itens através do ID.
 - Persistência de dados com banco de dados SQLite.
 
 # Instalação
-Para utilizar a ferramenta, siga o passo
+Para utilizar a ferramenta, siga o passos
 
 1. Clone o repositório local.
 ```bash
@@ -29,3 +29,15 @@ npm install
 ```bash
 npm run dev
 ```
+# Arquitetura do projeto 
+O projeto foi desenvolvido em uma arquitetura em camadas, visando uma organização de maneira modular e escalável.
+
+- CLI [`menu.ts`]: responsavel por coletar input do usuario  via biblioteca Inquirer.
+- Service [`services`]: valida os dados inseridos e aplica as regras de negócio.
+- Repository [`product-repo.ts`]: realiza a execução de operações no banco de dados.
+- Database: responsável por gerenciar a conexão e a estrutura do SQLite.
+
+Desenvolvido por **William**
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/williamcouto)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0a66c2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/williamplácido)
