@@ -24,9 +24,9 @@ export async function showMenu(): Promise<void>{
                 message: "O que deseja fazer?",
                 choices: [
                     'Cadastrar Produto',
-                    'Listar produtos',
-                    'Alerta de Quantidade',
-                    'Deletar produto',
+                    'Listar Produtos',
+                    'Verificar Estoque Baixo',
+                    'Deletar Produto',
                     new inquirer.Separator(),
                     'Sair'
                 ],
@@ -76,7 +76,7 @@ export async function showMenu(): Promise<void>{
                 break
             
             // Listar os produtos presentes na tabela
-            case "Listar produtos":
+            case "Listar Produtos":
                 const products = service.listAllProducts()
                 console.table(products)
                 break
@@ -87,7 +87,7 @@ export async function showMenu(): Promise<void>{
                 break
             
             // Deletar um produto da tabela
-            case "Deletar produto":
+            case "Deletar Produto":
                 const { id } = await inquirer.prompt([
                     {
                         type: "number",
@@ -105,7 +105,7 @@ export async function showMenu(): Promise<void>{
                 break
             
             // Filtrar produtos 
-            case "Alerta de Quantidade":
+            case "Verificar Estoque Baixo":
                 const listProducts = service.filterLowProducts()
                 console.table(listProducts)
                 break
