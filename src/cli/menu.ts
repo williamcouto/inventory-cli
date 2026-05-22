@@ -60,6 +60,7 @@ export async function showMenu(): Promise<void>{
                                 `${Categorias.Salgados}`,
                                 `${Categorias.Doces}`,
                                 `${Categorias.Bebidas}`,
+                                `${Categorias.Papelaria}`,
                                 `${Categorias.Eletronicos}`,
                                 `${Categorias.Outros}`
                             ]
