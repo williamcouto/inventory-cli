@@ -1,6 +1,5 @@
 import { ProductRepo } from "../database/product-repo.js";
 import { Produto } from "../models/products.js";
-import picocolors from "picocolors";
 import { logger } from "../cli/menu.js";
 
 // Validações e Regras de negócio
@@ -12,7 +11,7 @@ export class ProductService{
             logger.alert("O nome do produto é obrigatório")
             throw new Error()
         }
-        if(product.quantity == null){
+        if(product.quantity === null || product.quantity === undefined){
             logger.alert("A quantidade é obrigatória")
             throw new Error()
         }
@@ -47,5 +46,4 @@ export class ProductService{
     filterLowProducts(){
         return this.repo.filterLowProducts()
     }
-    
 }
