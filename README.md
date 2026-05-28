@@ -24,10 +24,11 @@ Para utilizar a ferramenta, verifique os pré-requisitos
 
 ### Como usar?
 Após executar o comando `npm run dev`, um menu interativo será exibido com as opções:
-- Cadastrar produtos: permite inserir novos produtos
-- Listar produtos: exibe a tabela com todos os itens cadastrados.
-- Deletar produtos: remove o item específico com ID
-- Sair: encerra a ferramenta
+- **Cadastrar produtos**: permite inserir novos produtos
+- **Listar produtos**: exibe a tabela com todos os itens cadastrados.
+- **Deletar produtos**: remove o item específico com ID
+- **Alerta de quantidade**: lista os itens com baixa quantidade. 
+- **Sair**: encerra a ferramenta
 
 1. Clone o repositório local.
 ```bash
@@ -37,7 +38,8 @@ git clone https://github.com/williamcouto/inventory-cli.git
 ```bash
 npm install
 ```
-3. Execute a ferramenta no modo desenvolvimento ou compile para produção.
+3. Crie uma pasta ```data/```
+4. Execute a ferramenta no modo desenvolvimento ou compile para produção.
 ```bash
 ### Modo desenvolvimento
 npm run dev
