@@ -17,6 +17,7 @@ export const logger = {
 export async function showMenu(): Promise<void>{
     let optionState = true
     while(optionState){
+        console.log(picocolors.bgBlackBright("GERENCIADOR DE INVENTÁRIO"))
         const { menu } = await inquirer.prompt([
             {
                 type: "rawlist",
@@ -25,6 +26,7 @@ export async function showMenu(): Promise<void>{
                 choices: [
                     'Cadastrar Produto',
                     'Listar Produtos',
+                    new inquirer.Separator(),
                     'Verificar Estoque Baixo',
                     'Deletar Produto',
                     new inquirer.Separator(),
