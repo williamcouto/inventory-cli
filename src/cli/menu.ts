@@ -1,5 +1,6 @@
 // Onde ficará a biblioteca inquirer, loop do menu e as rotas de ação
 import inquirer from "inquirer";
+import { confirm } from "@inquirer/prompts";
 import { ProductService } from "../services/product-service.js";
 import { Categorias } from "../models/products.js";
 import picocolors from "picocolors";
@@ -98,8 +99,16 @@ export async function showMenu(): Promise<void>{
                     }
                 ])
 
+                const answerUser = await confirm({
+                    message: "Deseja excluir o produto?"
+                })
                 try{
-                    service.deleteProducts(id)
+                    if(answerUser == true){
+                        service.deleteProducts(id)
+                    }
+                    else{
+                        console.log("Retornando ao menu!")
+                    }
                 }
                 catch(error){
                     console.log(error)
