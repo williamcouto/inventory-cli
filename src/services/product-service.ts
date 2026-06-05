@@ -34,6 +34,10 @@ export class ProductService{
         return this.repo.listAllProducts()
     }
 
+    countAllProducts(){
+        return this.repo.countAllProducts()
+    }
+
     deleteProducts(id: number): void{
         if(id == null){
             logger.alert("O ID é obrigatório para a exclusão!")
