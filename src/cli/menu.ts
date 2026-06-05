@@ -19,6 +19,14 @@ export async function showMenu(): Promise<void>{
     let optionState = true
     while(optionState){
         console.log(picocolors.bgBlackBright("GERENCIADOR DE INVENTÁRIO"))
+
+        //Contagem de produtos
+        const productsRegister = service.countAllProducts()
+        if(typeof productsRegister === "object" && productsRegister != null){
+            let productValues = Object.values(productsRegister)
+            console.log(`Produtos Cadastrados: ${productValues}`)
+        }
+
         const { menu } = await inquirer.prompt([
             {
                 type: "rawlist",
