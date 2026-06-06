@@ -26,6 +26,11 @@ export class ProductRepo{
         return totalProducts
     }
 
+    countLowProducts(){
+        const lowProducts = dbInventory.prepare(`SELECT COUNT(*) AS lowProducts FROM products WHERE quantity <= 6`).get() as {lowProducts: number}
+        return lowProducts
+    }
+
     deleteProducts(id: number){
         const queryStateDel = dbInventory.prepare(`DELETE FROM products WHERE id = ?`).run(id)
         return queryStateDel
