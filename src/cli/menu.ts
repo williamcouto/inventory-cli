@@ -27,6 +27,10 @@ export async function showMenu(): Promise<void>{
             console.log(`Produtos Cadastrados: ${productValues}`)
         }
 
+        //Contagem de produtos com baixo estoque
+        const productsLow = service.countLowProducts()
+        console.log(picocolors.yellow(`Produtos com Baixo Estoque: ${productsLow.lowProducts}`))
+
         const { menu } = await inquirer.prompt([
             {
                 type: "rawlist",
