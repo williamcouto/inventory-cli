@@ -34,6 +34,10 @@ export class ProductService{
         return this.repo.listAllProducts()
     }
 
+    countLowProducts(){
+        return this.repo.countLowProducts()
+    }
+
     countAllProducts(){
         return this.repo.countAllProducts()
     }
