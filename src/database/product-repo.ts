@@ -31,6 +31,11 @@ export class ProductRepo{
         return lowProducts
     }
 
+    modifyProducts(id: number, field: string, value: string | number){
+        const queryProductMod = dbInventory.prepare(`UPDATE products SET ${field} WHERE id = ?`).run(value, id)
+        return queryProductMod
+    }
+
     deleteProducts(id: number){
         const queryStateDel = dbInventory.prepare(`DELETE FROM products WHERE id = ?`).run(id)
         return queryStateDel
