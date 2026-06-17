@@ -38,6 +38,16 @@ export class ProductService{
         return this.repo.countLowProducts()
     }
 
+    modifyProducts(id: number, fieldProduct: string,  value: string | number){
+        const allowFieldValidate = ["name", "quantity", "price", "category"]
+        // Checa se os campos são válidos
+        if(!allowFieldValidate.includes(fieldProduct)){
+            logger.alert("O Campo é inválido!")
+            throw new Error()
+        }
+        return this.repo.modifyProducts(id, fieldProduct, value)
+    }
+
     countAllProducts(){
         return this.repo.countAllProducts()
     }
