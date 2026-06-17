@@ -1,6 +1,6 @@
 // Onde ficará a biblioteca inquirer, loop do menu e as rotas de ação
 import inquirer from "inquirer";
-import { confirm } from "@inquirer/prompts";
+import { confirm, editor } from "@inquirer/prompts";
 import { ProductService } from "../services/product-service.js";
 import { Categorias } from "../models/products.js";
 import picocolors from "picocolors";
@@ -39,6 +39,7 @@ export async function showMenu(): Promise<void>{
                 choices: [
                     'Cadastrar Produto',
                     'Listar Produtos',
+                    'Editar Produtos',
                     new inquirer.Separator(),
                     'Verificar Estoque Baixo',
                     'Deletar Produto',
@@ -89,6 +90,42 @@ export async function showMenu(): Promise<void>{
                     logger.alert(`Ocorreu um erro ao cadastrar o produto - ${error}`)
                 }
                 break
+            
+            // Editar dados dos produtos
+            case "Editar Produtos": {
+                    const { idMenu } = await inquirer.prompt([
+                        {
+                            type: "input",
+                            name: "idMenu",
+                            message: "Insira o ID do produto"
+                        }
+                    ])
+
+                    // TRansformando array de string em um objeto para exibir as opções de campos sem alterar os valores já definidos.
+                    const allowFieldValidate = [
+                        {
+                            name: "Nome", value: "name",
+                        },{
+                            name: "Quantidade", value: "quantity"
+                        },{
+                            name: "Preço", value: "price"
+                        },{
+                            name: "Categoria", value: "category"
+                        }
+                    ]
+                    const {editField} = await inquirer.prompt([
+                        {
+                            type: "rawlist",
+                            name: "editField",
+                            message: "Selecione o campo",
+                            choices: allowFieldValidate.map(item => ({name: item.name, value: item.value}))
+                        }
+                    ]) 
+
+                    console.log(idMenu)
+                    console.log(editField)
+                break
+            }
             
             // Listar os produtos presentes na tabela
             case "Listar Produtos":
