@@ -32,7 +32,7 @@ export class ProductRepo{
     }
 
     modifyProducts(id: number, field: string, value: string | number){
-        const queryProductMod = dbInventory.prepare(`UPDATE products SET ${field} WHERE id = ?`).run(value, id)
+        const queryProductMod = dbInventory.prepare(`UPDATE products SET ${field} = ? WHERE id = ?`).run(value, id)
         return queryProductMod
     }
 
