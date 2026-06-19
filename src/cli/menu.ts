@@ -101,7 +101,7 @@ export async function showMenu(): Promise<void>{
                         }
                     ])
 
-                    // TRansformando array de string em um objeto para exibir as opções de campos sem alterar os valores já definidos.
+                    // Transformando array de string em um objeto para exibir as opções de campos sem alterar os valores já definidos.
                     const allowFieldValidate = [
                         {
                             name: "Nome", value: "name",
@@ -130,6 +130,7 @@ export async function showMenu(): Promise<void>{
                         }
                     ])
                     service.modifyProducts(idMenu, editField, newValueField)
+                    logger.success(`O campo ${editField} foi alterado | Novo valor: ${newValueField}`)
                 break                    
             }
 
