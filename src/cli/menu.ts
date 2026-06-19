@@ -120,13 +120,19 @@ export async function showMenu(): Promise<void>{
                             message: "Selecione o campo",
                             choices: allowFieldValidate.map(item => ({name: item.name, value: item.value}))
                         }
-                    ]) 
-
-                    console.log(idMenu)
-                    console.log(editField)
-                break
+                    ])
+                    
+                    const { newValueField } = await inquirer.prompt([
+                        {
+                            type: "input",
+                            name: "newValueField",
+                            message: `Insira um novo valor para o campo ${editField}:`
+                        }
+                    ])
+                    service.modifyProducts(idMenu, editField, newValueField)
+                break                    
             }
-            
+
             // Listar os produtos presentes na tabela
             case "Listar Produtos":
                 const products = service.listAllProducts()
