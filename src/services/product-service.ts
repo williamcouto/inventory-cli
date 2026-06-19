@@ -45,6 +45,14 @@ export class ProductService{
             logger.alert("O Campo é inválido!")
             throw new Error()
         }
+        // Verifica se o ID existe na tabela antes de modificar
+        const productsList = this.repo.listAllProducts()
+        const productExists = productsList.some(product => product.id === Number(id))
+        if(!productExists){
+            logger.alert("O ID do produto não existe")
+            throw new Error()
+        }
+
         return this.repo.modifyProducts(id, fieldProduct, value)
     }
 
