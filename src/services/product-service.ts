@@ -72,4 +72,12 @@ export class ProductService{
     filterLowProducts(){
         return this.repo.filterLowProducts()
     }
+
+    async exportToCSV(filePath: string){
+        // valida se há produtos na tabela
+        if(filePath.length === 0){
+            console.log('Não existem produtos na tabela!')
+        }
+        return this.repo.exportToCSV(filePath)
+    }
 }
