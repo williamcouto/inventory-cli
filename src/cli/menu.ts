@@ -4,6 +4,8 @@ import { confirm, editor } from "@inquirer/prompts";
 import { ProductService } from "../services/product-service.js";
 import { Categorias } from "../models/products.js";
 import picocolors from "picocolors";
+import path from "node:path";
+import fs from "node:fs";
 
 const service = new ProductService()
 export const logger = {
@@ -40,6 +42,7 @@ export async function showMenu(): Promise<void>{
                     'Cadastrar Produto',
                     'Listar Produtos',
                     'Editar Produtos',
+                    'Exportar para CSV',
                     new inquirer.Separator(),
                     'Verificar Estoque Baixo',
                     'Deletar Produto',
@@ -132,7 +135,30 @@ export async function showMenu(): Promise<void>{
                     service.modifyProducts(idMenu, editField, newValueField)
                     logger.success(`O campo ${editField} foi alterado | Novo valor: ${newValueField}`)
                 break                    
-            }
+            }   
+
+            // Exportar para CSV
+            case "Exportar para CSV":
+                const {filePath} = await inquirer.prompt([
+                    {
+                        type: "input",
+                        name: "filePath",
+                        message: "Insira o caminho para salvar o arquivo:",
+                        default: path.join(process.cwd(), 'inventory.csv')
+                        // Une partes de um caminho usando o separador conforme o sistema operacional.
+                    }
+                ])
+
+                try{
+                    const outputPathUser = path.resolve(filePath) // caminho absoluto
+                    fs.mkdirSync(path.dirname(outputPathUser), {recursive: true})
+                    await service.exportToCSV(outputPathUser)
+                    logger.success(`Arquivo CSV exportado com sucesso para: ${outputPathUser}`)
+                }
+                catch(err){
+                    logger.alert(`Ocorreu um erro na exportação: ${err}`)
+                }
+                break
 
             // Listar os produtos presentes na tabela
             case "Listar Produtos":
