@@ -1,3 +1,4 @@
+import { writeToPath } from "@fast-csv/format";
 import dbInventory from "../database/connection.js";
 import { Produto } from "../models/products.js"
 
@@ -46,5 +47,14 @@ export class ProductRepo{
             SELECT name, quantity FROM products WHERE quantity < 6`)
         const products = filteredProduct.all() as Produto[]
         return products
+    }
+
+    exportToCSV(filePath: string){
+        const products = this.listAllProducts() // reutiliza metódo para buscar os itens
+        return new Promise((resolve, reject) => {
+            writeToPath(filePath, products, {headers: true})
+                .on('error', reject)
+                .on('finish', resolve)
+        })
     }
 }
