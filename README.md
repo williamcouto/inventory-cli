@@ -11,6 +11,7 @@ Ferramenta de gerenciamento de inventário via linha de comando, desenvolvida co
 ## Funcionalidade
 - Cadastrar produtos com nome, preço, quantidade e categoria.
 - Listar todos os produtos em uma tabela formatada e personalizada.
+- Editar itens e suas propriedades.
 - Deletar itens através do ID.
 - Persistência de dados com banco de dados SQLite.
 
@@ -24,11 +25,12 @@ Para utilizar a ferramenta, verifique os pré-requisitos
 
 ### Como usar?
 Após executar o comando `npm run dev`, um menu interativo será exibido com as opções:
-- **Cadastrar produtos**: permite inserir novos produtos
+- **Cadastrar produtos**: permite inserir novos produtos.
 - **Listar produtos**: exibe a tabela com todos os itens cadastrados.
-- **Deletar produtos**: remove o item específico com ID
+- **Editar produtos**: atualiza os itens existentes.
+- **Deletar produtos**: remove o item específico com ID.
 - **Alerta de quantidade**: lista os itens com baixa quantidade. 
-- **Sair**: encerra a ferramenta
+- **Sair**: encerra a ferramenta.
 
 1. Clone o repositório local.
 ```bash
